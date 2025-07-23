@@ -44,13 +44,13 @@ app.post(
                 return res.status(400).json({ error: "Files missing" });
             }
 
-            // 1. 读取员工表
+            // 1. read employee excel
             const empFile = files["employees"][0];
             const empWorkbook = xlsx.readFile(empFile.path);
             const empSheet = empWorkbook.Sheets[empWorkbook.SheetNames[0]];
             const employees: Employee[] = xlsx.utils.sheet_to_json(empSheet);
 
-            // 2. 用 Map 去重候选人（name + role 唯一）
+            // 2. choose the candidate
             const candidateMap = new Map<
                 string,
                 { name: string; joinDate: string; role: string; teamMember: string }
@@ -98,14 +98,14 @@ app.post(
             }
 
 
-            // 清理上传的临时文件
+            // clear uploaded temp files
             [...files["reports"], empFile].forEach((f) => {
                 fs.unlink(f.path, (err) => {
                     if (err) console.error("Failed to delete temp file:", err);
                 });
             });
 
-            // 返回去重后的结果
+            // return results
             const results = Array.from(candidateMap.values());
             res.json(results);
         } catch (err) {
