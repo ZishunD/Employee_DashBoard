@@ -97,6 +97,7 @@ export default function Page() {
     reportFiles.forEach((file) => formData.append('reports', file));
     formData.append('employees', employeeFile);
 
+    console.log(process.env.NEXT_PUBLIC_API_URL);
     try {
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/analyze`, formData);
       setResults(res.data);
