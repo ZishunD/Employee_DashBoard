@@ -98,7 +98,7 @@ export default function Page() {
     formData.append('employees', employeeFile);
 
     try {
-      const res = await axios.post(`${process.env.BACKEND_API}/api/analyze`, formData);
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/analyze`, formData);
       setResults(res.data);
     } catch {
       alert('Failed to upload, check file types');

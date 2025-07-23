@@ -1,28 +1,69 @@
-# Employee Dashboard File Uploader
+# 🧾 Employee Dashboard File Analyzer
 
-A React (Next.js) frontend component for uploading Daily Report Excel files and a New Employee Excel file, with drag-and-drop support, file preview and removal, and an analysis result table.
+An end-to-end full stack app that allows team leads to upload daily interview reports and HR to upload employee records. The backend processes and analyzes the files to identify which new employees were successfully hired.
 
-## Features
+---
 
-- Upload multiple Daily Report files (.xls, .xlsx) with drag & drop and click-to-select.
-- Upload a single New Employee file (.xls, .xlsx) with drag & drop and click-to-select.
-- Prevent duplicate files in Daily Reports by file name and size.
-- Preview uploaded files with file names and option to remove any.
-- Submit files to backend API for processing.
-- Display analysis results in a clean, responsive table.
-- Custom lightweight toast notification popup for upload success/failure.
-- Loading state during file upload.
-- Fully styled with Tailwind CSS.
-- Keyboard accessible drag/drop zones.
-- Modern UX with clear visual feedback.
+## 📁 Project Structure
 
-## Installation
+```
+employee-dashboard/
+│
+├── frontend/     # Next.js (App Router, Tailwind CSS)
+│
+└── backend/      # Express + TypeScript + Multer + XLSX
+```
 
-This component is built with React and Tailwind CSS and intended for use in a Next.js project.
+---
 
-1. Clone this repository or copy the component files into your Next.js project.
+## 🚀 Features
 
-2. Install dependencies:
+* 📤 Upload multiple daily interview report files (.xls/.xlsx)
+* 🧾 Upload a single employee list file (.xls/.xlsx)
+* ❌ Duplicate file check
+* 📊 Automatic matching: successful interview → employee table
+* 🧮 Backend analysis logic (Node.js + XLSX)
+* 📬 Custom toast notifications
+* 💅 Styled with Tailwind CSS
+* ⚡ Instant deploy with Vercel (frontend) + Render (backend)
+
+---
+
+## 🛠️ Installation
+
+### 1. Clone the repo
 
 ```bash
-npm install axios lucide-react
+git clone https://github.com/your-username/employee-dashboard.git
+cd employee-dashboard
+```
+
+### 2. Backend Setup
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+### 3. Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Create `.env.local` inside `frontend/`:
+
+```
+NEXT_PUBLIC_API_URL=http://localhost:5000/api/analyze
+```
+
+---
+
+## 🌐 Deployment
+
+### 🔧 Backend (Render)
+
+### 🌍 Frontend (Vercel)
