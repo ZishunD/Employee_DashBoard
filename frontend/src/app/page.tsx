@@ -98,7 +98,7 @@ export default function Page() {
     formData.append('employees', employeeFile);
 
     try {
-      const res = await axios.post('http://localhost:5000/api/analyze', formData);
+      const res = await axios.post('${process.env.BACKEND_API}/api/analyze', formData);
       setResults(res.data);
     } catch {
       alert('Failed to upload, check file types');
@@ -106,12 +106,6 @@ export default function Page() {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    axios.get('http://localhost:5000/api/employees')
-      .then(res => setResults(res.data))
-      .catch(() => {});
-  }, []);
 
   return (
     <main className="max-w-5xl mx-auto p-6">
